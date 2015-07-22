@@ -118,7 +118,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="PlayFast:" destination="NNd-DA-cCa" eventType="touchUpInside" id="gUE-ge-68p"/>
+                                    <action selector="playFast:" destination="NNd-DA-cCa" eventType="touchUpInside" id="UXT-bs-PYw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XD7-Lw-2CH">
@@ -138,7 +138,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="StopPlay:" destination="NNd-DA-cCa" eventType="touchUpInside" id="Lap-fr-laA"/>
+                                    <action selector="stopPlay:" destination="NNd-DA-cCa" eventType="touchUpInside" id="dgu-mM-5gC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXw-j6-TPL">
@@ -149,7 +149,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="PlaySlow:" destination="NNd-DA-cCa" eventType="touchUpInside" id="OgG-yD-bQR"/>
+                                    <action selector="playSlow:" destination="NNd-DA-cCa" eventType="touchUpInside" id="ypy-Xc-j5r"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0JU-JB-gMW">
