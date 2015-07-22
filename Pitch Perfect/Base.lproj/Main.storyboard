@@ -92,9 +92,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="YlE-O9-zHr"/>
                     <connections>
-                        <outlet property="btn_record" destination="HMi-7H-B0G" id="t7p-I6-GV4"/>
-                        <outlet property="btn_stop_recording" destination="IIS-0S-s7a" id="eZR-Hc-xYU"/>
-                        <outlet property="lbl_recording" destination="reH-Jh-cF7" id="Rb3-sf-Haa"/>
+                        <outlet property="infoUILabel" destination="reH-Jh-cF7" id="WVa-wE-1Tw"/>
+                        <outlet property="recordUIButton" destination="HMi-7H-B0G" id="XKd-8f-0wB"/>
+                        <outlet property="stopRecordingUIButton" destination="IIS-0S-s7a" id="jZI-SY-3Fb"/>
                         <segue destination="NNd-DA-cCa" kind="show" identifier="stopRecording" id="QkF-2s-qQL"/>
                     </connections>
                 </viewController>

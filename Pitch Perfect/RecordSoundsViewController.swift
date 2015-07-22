@@ -11,32 +11,25 @@ import AVFoundation
 
 class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
 
-    @IBOutlet weak var lbl_recording: UILabel!
-    @IBOutlet weak var btn_stop_recording: UIButton!
-    @IBOutlet weak var btn_record: UIButton!
+    @IBOutlet weak var infoUILabel: UILabel!
+    @IBOutlet weak var stopRecordingUIButton: UIButton!
+    @IBOutlet weak var recordUIButton: UIButton!
     
     var audioRecorder:AVAudioRecorder!
     var recordedAudio:RecordedAudio!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(animated: Bool) {
-        btn_stop_recording.hidden = true;
-        btn_record.enabled = true;
-        lbl_recording.text = "Tap Microphone to Record Audio"
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        super.viewWillAppear(animated)
+        stopRecordingUIButton.hidden = true;
+        recordUIButton.enabled = true;
+        infoUILabel.text = "Tap Microphone to Record Audio"
     }
 
     @IBAction func recordAudio(sender: UIButton) {
         println("in recordAudio")
-        lbl_recording.text = "Recording Audio in Progress"
-        btn_stop_recording.hidden = false;
-        btn_record.enabled = false;
+        infoUILabel.text = "Recording Audio in Progress"
+        stopRecordingUIButton.hidden = false;
+        recordUIButton.enabled = false;
         
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
         
@@ -59,12 +52,12 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
         if(flag){
             recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)
-            self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
+            performSegueWithIdentifier("stopRecording", sender: recordedAudio)
         }else
         {
             println("Recording did not complete properly.")
-            btn_record.enabled = true;
-            btn_stop_recording.hidden = true;
+            recordUIButton.enabled = true;
+            stopRecordingUIButton.hidden = true;
         }
     }
     
@@ -79,7 +72,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     @IBAction func stopRecording(sender: UIButton) {
         println("in stopRecording")
-        btn_stop_recording.hidden = true;
+        stopRecordingUIButton.hidden = true;
         
         audioRecorder.stop()
         var audioSession = AVAudioSession.sharedInstance()
