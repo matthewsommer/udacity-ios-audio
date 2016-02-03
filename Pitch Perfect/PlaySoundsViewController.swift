@@ -21,43 +21,43 @@ class PlaySoundsViewController: UIViewController {
         super.viewDidLoad()
         
         audioEngine = AVAudioEngine()
-        audioFile = AVAudioFile(forReading: receivedAudio.filePathUrl, error: nil)
+        audioFile = try? AVAudioFile(forReading: receivedAudio.filePathUrl)
         
-        audioPlayer = AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl, error: nil)
+        audioPlayer = try? AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl)
         audioPlayer.enableRate = true;
     }
 
     @IBAction func playSlow(sender: UIButton) {
-        println("in PlaySlow")
+        print("in PlaySlow")
         playAudioWithVariableRate(0.5)
     }
     @IBAction func playFast(sender: UIButton) {
-        println("in PlayFast")
+        print("in PlayFast")
         playAudioWithVariableRate(1.5)
     }
     @IBAction func stopPlay(sender: UIButton) {
-        println("in StopPlay")
+        print("in StopPlay")
         stopRestAllAudio()
     }
     @IBAction func playChipmunkAudio(sender: UIButton) {
-        println("in playChipmunkAudio")
+        print("in playChipmunkAudio")
         playAudioWithVariablePitch(1000)
     }
     
     @IBAction func playDarthvaderAudio(sender: UIButton) {
-        println("in playDarthvaderAudio")
+        print("in playDarthvaderAudio")
         playAudioWithVariablePitch(-1000)
     }
     
     func playAudioWithVariableRate(rate: Float){
-        println("in playAudioWithVariableRate")
+        print("in playAudioWithVariableRate")
         stopRestAllAudio()
         audioPlayer.rate = rate
         audioPlayer.play()
     }
     
     func playAudioWithVariablePitch(pitch: Float){
-        println("in playAudioWithVariablePitch")
+        print("in playAudioWithVariablePitch")
         stopRestAllAudio()
         
         var audioPlayerNode = AVAudioPlayerNode()
@@ -71,7 +71,10 @@ class PlaySoundsViewController: UIViewController {
         audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-        audioEngine.startAndReturnError(nil)
+        do {
+            try audioEngine.startAndReturnError()
+        } catch _ {
+        }
         
         audioPlayerNode.play()
     }
